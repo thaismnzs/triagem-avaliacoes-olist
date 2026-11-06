@@ -81,7 +81,7 @@ Li 12 exemplos de cada tipo de erro do modelo escolhido. São amostras pequenas:
 ## Como reproduzir
 
 1. Crie um notebook no [Kaggle](https://www.kaggle.com) e adicione o dataset **Brazilian E-Commerce Public Dataset by Olist** (autor: Olist) em *Add Input*.
-2. Abra o arquivo `notebook22a893d03f.ipynb` deste repositório (ou copie as células para o notebook novo).
+2. Abra o arquivo `triagem_avaliacoes.ipynb` deste repositório (ou copie as células para o notebook novo).
 3. Ajuste o caminho do CSV se necessário. No Kaggle ele costuma ser `/kaggle/input/datasets/olistbr/brazilian-ecommerce/olist_order_reviews_dataset.csv`.
 4. Execute as células em ordem.
 
