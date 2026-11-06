@@ -81,7 +81,7 @@ Li 12 exemplos de cada tipo de erro do modelo escolhido. São amostras pequenas:
 ## Como reproduzir
 
 1. Crie um notebook no [Kaggle](https://www.kaggle.com) e adicione o dataset **Brazilian E-Commerce Public Dataset by Olist** (autor: Olist) em *Add Input*.
-2. Abra o arquivo `NOME_DO_NOTEBOOK.ipynb` deste repositório (ou copie as células para o notebook novo).
+2. Abra o arquivo `notebook22a893d03f.ipynb` deste repositório (ou copie as células para o notebook novo).
 3. Ajuste o caminho do CSV se necessário. No Kaggle ele costuma ser `/kaggle/input/datasets/olistbr/brazilian-ecommerce/olist_order_reviews_dataset.csv`.
 4. Execute as células em ordem.
 
@@ -94,8 +94,4 @@ Li 12 exemplos de cada tipo de erro do modelo escolhido. São amostras pequenas:
 - [ ] Publicar o modelo no Hugging Face com model card.
 - [ ] Criar uma API com FastAPI e Docker para servir as previsões.
 
-## Autora
 
-**Thais Menezes**, estudante de Análise e Desenvolvimento de Sistemas no IFBA.
-
-[GitHub](https://github.com/thaismnzs)
