@@ -70,6 +70,26 @@ Li 12 exemplos de cada tipo de erro do modelo escolhido. São amostras pequenas:
 
 **O que isso indica:** a nota usada como rótulo tem ruído nos dois sentidos. Na amostra lida, boa parte dos "falsos alarmes" eram reclamações genuínas, então a precision de 0,73 provavelmente **subestima** o desempenho real do modelo para identificar reclamações. Isso precisa ser confirmado com rotulagem manual (veja os próximos passos).
 
+## Validação manual
+
+Como a nota é um rótulo aproximado, avaliei o modelo contra um critério de reclamação definido por texto. Sorteei 200 comentários do conjunto de teste (`random_state=7`) e os classifiquei sem olhar a nota nem a previsão do modelo.
+
+**Critério:** reclamação (1) quando o texto relata um problema concreto com produto, entrega ou vendedor (não recebeu, atraso, defeito, item errado ou incompleto, qualidade ruim, pedido de troca ou reembolso), mesmo que o restante elogie. Elogios e comentários neutros são não reclamação (0).
+
+**Rótulos:** Gerados por assistente de IA e revisados por mim. 
+Dos 200 comentários, 72 foram marcados como reclamação (36%) e 14 ficaram em dúvida.
+
+| Comparação com o rótulo manual | Precision | Recall | F1 |
+|---|---|---|---|
+| Modelo (todos os 200) | 0,94 | 0,83 | 0,88 |
+| Nota 1 ou 2 (todos os 200) | 0,94 | 0,64 | 0,76 |
+| Modelo (sem os 14 em dúvida) | 0,93 | 0,93 | 0,93 |
+| Nota 1 ou 2 (sem os 14 em dúvida) | 0,94 | 0,75 | 0,83 |
+
+**Leitura:** a nota 1 ou 2 raramente marca um comentário que não seja reclamação, mas deixa passar cerca de um terço das reclamações. O modelo, treinado com a nota, concordou mais com o critério manual do que a própria nota. A precision de 0,73 medida contra a nota é, portanto, uma subestimativa para a tarefa de achar reclamações. O recall caiu em relação à medida contra a nota (0,93 para 0,83), provavelmente porque o critério manual é mais amplo.
+
+**Ressalvas:** amostra pequena (72 reclamações), um único critério e um único rotulador, então os números são estimativas aproximadas.
+
 ## Limitações
 
 - A nota é um **rótulo aproximado** de reclamação: nem toda nota baixa é queixa do serviço, e nem toda queixa vem com nota baixa.
@@ -89,7 +109,7 @@ Li 12 exemplos de cada tipo de erro do modelo escolhido. São amostras pequenas:
 
 ## Próximos passos
 
-- [ ] Rotular manualmente cerca de 200 comentários para medir o desempenho sem o ruído da nota.
+- [x] Rotular manualmente cerca de 200 comentários para medir o desempenho sem o ruído da nota.
 - [ ] Fine-tuning do BERTimbau (modelo de linguagem em português) e comparação com o baseline, usando a mesma divisão de dados.
 - [ ] Publicar o modelo no Hugging Face com model card.
 - [ ] Criar uma API com FastAPI e Docker para servir as previsões.
